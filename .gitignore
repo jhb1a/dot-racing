@@ -1,0 +1,20 @@
+# Godot 4
+.godot/
+.import/
+*.import
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor config
+.editorconfig
+
+# Export
+export_presets.cfg
+builds/
