@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bf31k2si8ys7p"]
+
+[ext_resource type="Texture2D" uid="uid://cyahh8tgd0agw" path="res://assets/red_dot.png" id="1_dd78r"]
+[ext_resource type="Script" uid="uid://cqvadq4gukipt" path="res://scripts/racer.gd" id="1_lacpj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lacpj"]
+
+[node name="Racer" type="RigidBody2D" unique_id=1641202494]
+script = ExtResource("1_lacpj")
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=784098041]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_lacpj")
+debug_color = Color(0.60537714, 0.5415324, 1.92523e-07, 0.41960785)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1940823428]
+unique_name_in_owner = true
+texture = ExtResource("1_dd78r")
