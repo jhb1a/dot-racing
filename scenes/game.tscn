@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bvj1pv6iiaov7" path="res://scripts/game.gd" id="1_uwrxv"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uwrxv"]
+radius = 201.0
+height = 622.0
+
 [node name="Game" type="Control" unique_id=1570192477]
 layout_mode = 3
 anchors_preset = 15
@@ -13,6 +17,16 @@ script = ExtResource("1_uwrxv")
 
 [node name="Racetrack" type="Node2D" parent="." unique_id=1935482584]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Racetrack" unique_id=470528282]
+[node name="InnerWall" type="StaticBody2D" parent="Racetrack" unique_id=470528282]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Racetrack/StaticBody2D" unique_id=1079284527]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Racetrack/InnerWall" unique_id=791109679]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_uwrxv")
+
+[node name="OuterWall" type="StaticBody2D" parent="Racetrack" unique_id=395757441]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Racetrack/OuterWall" unique_id=1108529524]
+position = Vector2(-960, -544)
+polygon = PackedVector2Array(0, 0, 768, 0, 640, 48, 512, 128, 416, 216, 336, 352, 296, 480, 296, 608, 336, 744, 424, 872, 512, 960, 640, 1040, 768, 1080, 0, 1080)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=242723163]
