@@ -2,10 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bvj1pv6iiaov7" path="res://scripts/game.gd" id="1_uwrxv"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uwrxv"]
-radius = 201.0
-height = 622.0
-
 [node name="Game" type="Control" unique_id=1570192477]
 layout_mode = 3
 anchors_preset = 15
@@ -19,14 +15,12 @@ script = ExtResource("1_uwrxv")
 
 [node name="InnerWall" type="StaticBody2D" parent="Racetrack" unique_id=470528282]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Racetrack/InnerWall" unique_id=791109679]
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_uwrxv")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Racetrack/InnerWall" unique_id=767830038]
+polygon = PackedVector2Array(-384, 0, -375.14, 66.23, -349.85, 128, -308.85, 181.02, -256, 221.7, -198.77, 247.32, -128, 256, 128, 256, 198.77, 247.32, 256, 221.7, 308.85, 181.02, 349.85, 128, 375.14, 66.23, 384, 0, 375.14, -66.23, 349.85, -128, 308.85, -181.02, 256, -221.7, 198.77, -247.32, 128, -256, -128, -256, -198.77, -247.32, -256, -221.7, -308.85, -181.02, -349.85, -128, -375.14, -66.23)
 
-[node name="OuterWall" type="StaticBody2D" parent="Racetrack" unique_id=395757441]
+[node name="OuterWalls" type="StaticBody2D" parent="Racetrack" unique_id=395757441]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Racetrack/OuterWall" unique_id=1108529524]
-position = Vector2(-960, -544)
-polygon = PackedVector2Array(0, 0, 768, 0, 640, 48, 512, 128, 416, 216, 336, 352, 296, 480, 296, 608, 336, 744, 424, 872, 512, 960, 640, 1040, 768, 1080, 0, 1080)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Racetrack/OuterWalls" unique_id=1582745440]
+polygon = PackedVector2Array(-960, -540, -128, -540, -267.74, -521.58, -398, -467.65, -509.85, -381.84, -595.67, -270, -649.67, -139.73, -668, 0, -649.67, 139.73, -595.67, 270, -509.85, 381.84, -398, 467.65, -267.74, 521.58, -128, 540, -960, 540)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=242723163]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=51849118]
