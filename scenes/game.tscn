@@ -2,6 +2,16 @@
 
 [ext_resource type="Script" uid="uid://bvj1pv6iiaov7" path="res://scripts/game.gd" id="1_uwrxv"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
+normal = Vector2(0, 1)
+distance = -540.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yqjtg"]
+distance = -540.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
+size = Vector2(128, 284)
+
 [node name="Game" type="Control" unique_id=1570192477]
 layout_mode = 3
 anchors_preset = 15
@@ -20,7 +30,22 @@ polygon = PackedVector2Array(-384, 0, -375.14, 66.23, -349.85, 128, -308.85, 181
 
 [node name="OuterWalls" type="StaticBody2D" parent="Racetrack" unique_id=395757441]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Racetrack/OuterWalls" unique_id=1582745440]
+[node name="Left" type="CollisionPolygon2D" parent="Racetrack/OuterWalls" unique_id=1582745440]
 polygon = PackedVector2Array(-960, -540, -128, -540, -267.74, -521.58, -398, -467.65, -509.85, -381.84, -595.67, -270, -649.67, -139.73, -668, 0, -649.67, 139.73, -595.67, 270, -509.85, 381.84, -398, 467.65, -267.74, 521.58, -128, 540, -960, 540)
+
+[node name="Right" type="CollisionPolygon2D" parent="Racetrack/OuterWalls" unique_id=600044019]
+polygon = PackedVector2Array(128, -540, 267.74, -521.58, 398, -467.65, 509.85, -381.84, 595.67, -270, 649.67, -139.73, 668, 0, 649.67, 139.73, 595.67, 270, 509.85, 381.84, 398, 467.65, 267.74, 521.58, 128, 540, 960, 540, 960, -540)
+
+[node name="Top" type="CollisionShape2D" parent="Racetrack/OuterWalls" unique_id=282233592]
+shape = SubResource("WorldBoundaryShape2D_uwrxv")
+
+[node name="Bottom" type="CollisionShape2D" parent="Racetrack/OuterWalls" unique_id=656804262]
+shape = SubResource("WorldBoundaryShape2D_yqjtg")
+
+[node name="FinishLine" type="Area2D" parent="Racetrack" unique_id=1712949964]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Racetrack/FinishLine" unique_id=202441897]
+position = Vector2(0, -398)
+shape = SubResource("RectangleShape2D_lnu2h")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=51849118]
