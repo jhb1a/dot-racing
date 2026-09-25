@@ -12,6 +12,17 @@ distance = -540.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
 size = Vector2(128, 284)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_standings"]
+content_margin_left = 28.0
+content_margin_top = 20.0
+content_margin_right = 28.0
+content_margin_bottom = 20.0
+bg_color = Color(0, 0, 0, 0.55)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
 [node name="Game" type="Control" unique_id=1570192477]
 layout_mode = 3
 anchors_preset = 15
@@ -26,15 +37,15 @@ script = ExtResource("1_uwrxv")
 [node name="InnerWall" type="StaticBody2D" parent="Racetrack" unique_id=470528282]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Racetrack/InnerWall" unique_id=767830038]
-polygon = PackedVector2Array(-384, 0, -375.14, 66.23, -349.85, 128, -308.85, 181.02, -256, 221.7, -198.77, 247.32, -128, 256, 128, 256, 198.77, 247.32, 256, 221.7, 308.85, 181.02, 349.85, 128, 375.14, 66.23, 384, 0, 375.14, -66.23, 349.85, -128, 308.85, -181.02, 256, -221.7, 198.77, -247.32, 128, -256, -128, -256, -198.77, -247.32, -256, -221.7, -308.85, -181.02, -349.85, -128, -375.14, -66.23)
+polygon = PackedVector2Array(-612, 0, -603.14, 66.23, -577.85, 128, -536.85, 181.02, -484, 221.7, -426.77, 247.32, -356, 256, 356, 256, 426.77, 247.32, 484, 221.7, 536.85, 181.02, 577.85, 128, 603.14, 66.23, 612, 0, 603.14, -66.23, 577.85, -128, 536.85, -181.02, 484, -221.7, 426.77, -247.32, 356, -256, -356, -256, -426.77, -247.32, -484, -221.7, -536.85, -181.02, -577.85, -128, -603.14, -66.23)
 
 [node name="OuterWalls" type="StaticBody2D" parent="Racetrack" unique_id=395757441]
 
 [node name="Left" type="CollisionPolygon2D" parent="Racetrack/OuterWalls" unique_id=1582745440]
-polygon = PackedVector2Array(-960, -540, -128, -540, -267.74, -521.58, -398, -467.65, -509.85, -381.84, -595.67, -270, -649.67, -139.73, -668, 0, -649.67, 139.73, -595.67, 270, -509.85, 381.84, -398, 467.65, -267.74, 521.58, -128, 540, -960, 540)
+polygon = PackedVector2Array(-960, -540, -356, -540, -495.74, -521.58, -626, -467.65, -737.85, -381.84, -823.67, -270, -877.67, -139.73, -896, 0, -877.67, 139.73, -823.67, 270, -737.85, 381.84, -626, 467.65, -495.74, 521.58, -356, 540, -960, 540)
 
 [node name="Right" type="CollisionPolygon2D" parent="Racetrack/OuterWalls" unique_id=600044019]
-polygon = PackedVector2Array(128, -540, 267.74, -521.58, 398, -467.65, 509.85, -381.84, 595.67, -270, 649.67, -139.73, 668, 0, 649.67, 139.73, 595.67, 270, 509.85, 381.84, 398, 467.65, 267.74, 521.58, 128, 540, 960, 540, 960, -540)
+polygon = PackedVector2Array(356, -540, 495.74, -521.58, 626, -467.65, 737.85, -381.84, 823.67, -270, 877.67, -139.73, 896, 0, 877.67, 139.73, 823.67, 270, 737.85, 381.84, 626, 467.65, 495.74, 521.58, 356, 540, 960, 540, 960, -540)
 
 [node name="Top" type="CollisionShape2D" parent="Racetrack/OuterWalls" unique_id=282233592]
 shape = SubResource("WorldBoundaryShape2D_uwrxv")
@@ -49,3 +60,65 @@ position = Vector2(0, -398)
 shape = SubResource("RectangleShape2D_lnu2h")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=51849118]
+zoom = Vector2(0.9, 0.9)
+
+[node name="BettingBox" type="CenterContainer" parent="."]
+visible = false
+offset_left = -560.0
+offset_top = -230.0
+offset_right = 560.0
+offset_bottom = 230.0
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="BettingBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_standings")
+
+[node name="StandingsBox" type="CenterContainer" parent="."]
+visible = false
+offset_left = -560.0
+offset_top = -220.0
+offset_right = 560.0
+offset_bottom = 220.0
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="StandingsBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_standings")
+
+[node name="Standings" type="RichTextLabel" parent="StandingsBox/Panel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 36
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ExitButton" type="Button" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -140.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 70.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 28
+text = "Exit"
+
+[node name="BalanceLabel" type="Label" parent="UI"]
+unique_name_in_owner = true
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 420.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 32
+text = "Balance: $1000"
+
+[connection signal="pressed" from="UI/ExitButton" to="." method="_on_exit_button_pressed"]
